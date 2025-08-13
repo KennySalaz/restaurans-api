@@ -8,6 +8,7 @@ import dbClient from "./config/dbClient.js";
 import routerUsers from "./routes/users.js";
 import swaggerUi from "swagger-ui-express";
 import openapiSpecification from "./swagger/swagger.js";
+import cors from 'cors';
 
 // Crea una instancia de la aplicación Express
 const app = express();
