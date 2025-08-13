@@ -1,0 +1,22 @@
+openapi: 3.0.0
+info:
+  title: API de Backend
+  version: 1.0.0
+  description: Documentación de la API del curso de backend
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+
+servers:
+  - url: http://localhost:3000
+    description: Development server
+  - url: http://localhost:3000
+    description: Production server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,110 @@
+tags:
+  - name: Usuarios
+    description: Endpoints para gestión de usuarios
+
+paths:
+  /users/auth/register:
+    post:
+      summary: Registra un nuevo usuario
+      tags:
+        - Usuarios
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        201:
+          description: Usuario registrado exitosamente
+        400:
+          description: Error en el registro
+
+  /users/auth/login:
+    post:
+      summary: Inicia sesión de usuario
+      tags:
+        - Usuarios
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: Login exitoso
+        401:
+          description: Credenciales inválidas
+
+  /users/auth/profile:
+    get:
+      summary: Obtiene el perfil del usuario autenticado
+      tags:
+        - Usuarios
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Perfil del usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        401:
+          description: No autorizado
+    put:
+      summary: Actualiza el perfil del usuario
+      tags:
+        - Usuarios
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        200:
+          description: Perfil actualizado
+        400:
+          description: Error en la actualización
+    delete:
+      summary: Elimina el perfil del usuario
+      tags:
+        - Usuarios
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Perfil eliminado
+        400:
+          description: Error al eliminar
+
+  /users/auth/profile/{id}:
+    get:
+      summary: Obtiene el perfil de un usuario por ID
+      tags:
+        - Usuarios
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del usuario
+      responses:
+        200:
+          description: Perfil del usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          description: Usuario no encontrado

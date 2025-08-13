@@ -1,0 +1,104 @@
+tags:
+  - name: Menus
+    description: Endpoints para gestión de menús
+
+paths:
+  /menu:
+    post:
+      summary: Crea un nuevo menú
+      tags:
+        - Menus
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Menu'
+      responses:
+        201:
+          description: Menú creado exitosamente
+        400:
+          description: Error al crear el menú
+
+  /menu/getAll:
+    get:
+      summary: Obtiene todos los menús
+      tags:
+        - Menus
+      responses:
+        200:
+          description: Lista de menús
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Menu'
+
+  /menu/{id}:
+    get:
+      summary: Obtiene un menú por ID
+      tags:
+        - Menus
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del menú
+      responses:
+        200:
+          description: Menú encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Menu'
+        404:
+          description: Menú no encontrado
+    put:
+      summary: Actualiza un menú por ID
+      tags:
+        - Menus
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del menú
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Menu'
+      responses:
+        200:
+          description: Menú actualizado
+        400:
+          description: Error en la actualización
+        401:
+          description: No autorizado
+    delete:
+      summary: Elimina un menú por ID
+      tags:
+        - Menus
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID del menú
+      responses:
+        200:
+          description: Menú eliminado
+        400:
+          description: Error al eliminar
+        401:
+          description: No autorizado

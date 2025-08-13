@@ -1,0 +1,24 @@
+User:
+  type: object
+  properties:
+    firstName:
+      type: string
+      example: "Juan"
+    lastName:
+      type: string
+      example: "Pérez"
+    email:
+      type: string
+      example: "juan@example.com"
+    password:
+      type: string
+      example: "123456"
+    createdAt:
+      type: string
+      format: date-time
+      example: "2023-01-01T00:00:00Z"
+  required:
+    - firstName
+    - lastName
+    - email
+    - password

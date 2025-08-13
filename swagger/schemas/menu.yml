@@ -1,0 +1,31 @@
+Menu:
+  type: object
+  properties:
+    name:
+      type: string
+      example: "Menú del día"
+    products:
+      type: array
+      items:
+        type: string
+      example:
+        - "Pizza"
+        - "Hamburguesa"
+        - "Ensalada"
+    type:
+      type: string
+      example: "Comida rápida"
+    reviews:
+      type: array
+      items:
+        type: string
+      example:
+        - "Excelente"
+        - "Muy bueno"
+    timestamp:
+      type: string
+      format: date-time
+      example: "2023-01-01T00:00:00Z"
+  required:
+    - name
+    - type
