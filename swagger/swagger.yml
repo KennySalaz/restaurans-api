@@ -9,9 +9,9 @@ info:
     email: support@example.com
 
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:5100
     description: Development server
-  - url: http://localhost:3000
+  - url: http://localhost:5100
     description: Production server
 
 components:

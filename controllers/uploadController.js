@@ -41,7 +41,8 @@ class uploadController {
       if (result.success) {
         // Retornar la URL del archivo subido
         const key = result.key;
-        const url = `https://${process.env.AWS_BUCKET}.s3.amazonaws.com/${key}`;
+        /*  const url = `https://${process.env.AWS_BUCKET}.s3.amazonaws.com/${key}`; */
+        const url = key;
         console.log("File uploaded successfully:", url);
         return res.status(201).json({ url });
       } else {
