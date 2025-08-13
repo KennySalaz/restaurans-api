@@ -17,7 +17,9 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification, {
     url: "/swagger.json",
   },
 }));
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 app.use(bodyParser.json()); // Middleware para parsear el cuerpo de las solicitudes como JSON
 app.use(bodyParser.urlencoded({ extended: true })); // Middleware para parsear datos URL-encoded
 app.use("/menu", routeMenu);
