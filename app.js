@@ -2,13 +2,14 @@
 import express from "express";
 // Importa y configura las variables de entorno desde un archivo .env
 import "dotenv/config";
-import routeMenu from "./routes/menu.js";
+import routeRestaurant from "./routes/restaurant.js";
 import bodyParser from "body-parser";
 import dbClient from "./config/dbClient.js";
 import routerUsers from "./routes/users.js";
 import swaggerUi from "swagger-ui-express";
 import openapiSpecification from "./swagger/swagger.js";
 import cors from 'cors';
+import routerUpload from "./routes/upload.js";
 
 // Crea una instancia de la aplicación Express
 const app = express();
@@ -22,8 +23,9 @@ app.use(cors({
 }));
 app.use(bodyParser.json()); // Middleware para parsear el cuerpo de las solicitudes como JSON
 app.use(bodyParser.urlencoded({ extended: true })); // Middleware para parsear datos URL-encoded
-app.use("/menu", routeMenu);
+app.use("/restaurant", routeRestaurant);
 app.use("/users", routerUsers);
+app.use("/upload", routerUpload);
 
 
 

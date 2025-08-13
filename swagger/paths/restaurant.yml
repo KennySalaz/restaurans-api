@@ -1,65 +1,65 @@
 tags:
-  - name: Menus
-    description: Endpoints para gestión de menús
+  - name: Restaurants
+    description: Endpoints para gestión de restaurantes
 
 paths:
-  /menu:
+  /restaurant:
     post:
-      summary: Crea un nuevo menú
+      summary: Crea un nuevo restaurante
       tags:
-        - Menus
+        - Restaurants
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Menu'
+              $ref: '#/components/schemas/Restaurant'
       responses:
         201:
-          description: Menú creado exitosamente
+          description: Restaurante creado exitosamente
         400:
-          description: Error al crear el menú
+          description: Error al crear el restaurante
 
-  /menu/getAll:
+  /restaurant/getAll:
     get:
-      summary: Obtiene todos los menús
+      summary: Obtiene todos los restaurantes
       tags:
-        - Menus
+        - Restaurants
       responses:
         200:
-          description: Lista de menús
+          description: Lista de restaurantes
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Menu'
+                  $ref: '#/components/schemas/Restaurant'
 
-  /menu/{id}:
+  /restaurant/{id}:
     get:
-      summary: Obtiene un menú por ID
+      summary: Obtiene un restaurante por ID
       tags:
-        - Menus
+        - Restaurants
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: string
-          description: ID del menú
+          description: ID del restaurante
       responses:
         200:
-          description: Menú encontrado
+          description: Restaurante encontrado
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Menu'
+                $ref: '#/components/schemas/Restaurant'
         404:
-          description: Menú no encontrado
+          description: Restaurante no encontrado
     put:
-      summary: Actualiza un menú por ID
+      summary: Actualiza un restaurante por ID
       tags:
-        - Menus
+        - Restaurants
       security:
         - bearerAuth: []
       parameters:
@@ -68,24 +68,24 @@ paths:
           required: true
           schema:
             type: string
-          description: ID del menú
+          description: ID del restaurante
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Menu'
+              $ref: '#/components/schemas/Restaurant'
       responses:
         200:
-          description: Menú actualizado
+          description: Restaurante actualizado
         400:
           description: Error en la actualización
         401:
           description: No autorizado
     delete:
-      summary: Elimina un menú por ID
+      summary: Elimina un restaurante por ID
       tags:
-        - Menus
+        - Restaurants
       security:
         - bearerAuth: []
       parameters:
@@ -94,11 +94,11 @@ paths:
           required: true
           schema:
             type: string
-          description: ID del menú
+          description: ID del restaurante
       responses:
         200:
-          description: Menú eliminado
-        400:
-          description: Error al eliminar
+          description: Restaurante eliminado
         401:
           description: No autorizado
+        404:
+          description: Restaurante no encontrado

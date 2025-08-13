@@ -1,20 +1,20 @@
-Menu:
+Restaurant:
   type: object
   properties:
     name:
       type: string
-      example: "Menú del día"
+      example: "Restaurante Italiano"
     products:
       type: array
       items:
         type: string
       example:
         - "Pizza"
-        - "Hamburguesa"
+        - "Pasta"
         - "Ensalada"
     type:
       type: string
-      example: "Comida rápida"
+      example: "Italiano"
     reviews:
       type: array
       items:
